@@ -11,7 +11,7 @@ const Header = () => {
               <Nav className="me-end gap-4">
                 <Link to='/'>Home</Link>
                 <Link to='/blog'>Blog</Link>
-                <Link to='/blog'>User</Link>
+                <Link to='/login'>User</Link>
               </Nav>
         </Container>
       </Navbar>
