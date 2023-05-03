@@ -1,36 +1,34 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { authContext } from "../Providers/Authprovider";
 import { Link } from "react-router-dom";
-import Sociallogin from "./Sociallogin/Sociallogin";
+import { authContext } from "../../../Providers/Authprovider";
+import "./Login.css"
 
-const Register = () => {
-  const { createUser, googleLogin } = useContext(authContext);
-  const [error, seterror] = useState("");
+
+const Login = () => {
+  const { login, googleLogin } = useContext(authContext);
   const [user, setuser] = useState("");
   const [success, setSuccess] = useState("");
-  const [accept, setAccept] = useState(false);
+  const [error, seterror] = useState("");
 
-  const handleRegister = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
+    setSuccess("");
+    seterror("");
     const form = event.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const photo = form.photo.value;
-    if (password.length < 6) {
-      seterror("password must be 6 character");
-    }
-     
-    createUser(email, password)
-        .then((result) => {
-          const loagedUser = result.user;
-          console.log(loagedUser);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    
+
+    login(email, password)
+      .then((result) => {
+        const loagedUser = result.user;
+        setSuccess("successfully login");
+        form.reset();
+        console.log(loagedUser);
+      })
+      .catch((error) => {
+        seterror(error.message);
+      });
   };
   const handleGoogleLogin = () => {
     seterror("");
@@ -45,31 +43,12 @@ const Register = () => {
         seterror(error.message);
       });
   };
-
   return (
-    <div className="row d-flex justify-content-center align-items-center container mt-5 mb-4">
+    <div className="row d-flex justify-content-center align-items-center container mt-5">
       <div className="col-md-6 ">
         <Container className="mx-auto w-50">
-          <h3>Please Register</h3>
-          <Form onSubmit={handleRegister}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                placeholder="Enter Name"
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Photo Url</Form.Label>
-              <Form.Control
-                type="text"
-                name="photo"
-                placeholder="Enter "
-                required
-              />
-            </Form.Group>
+          <h3>Please Login</h3>
+          <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -97,13 +76,13 @@ const Register = () => {
             </div>
 
             <Button variant="primary" type="submit">
-              register
+              Login
             </Button>
             <br />
             <Form.Text className="text-muted">
-              have an account please
-              <Link className="ms-2" to="/login">
-                login
+              Don't have an account please
+              <Link className="ms-2" to="/register">
+                register
               </Link>
             </Form.Text>
           </Form>
@@ -130,7 +109,7 @@ const Register = () => {
       <div className="col-md-6 ">
         <img
           className="w-100"
-          src="https://eply.com/wp-content/uploads/2021/12/ePly-1.jpg"
+          src="https://img.freepik.com/free-vector/computer-login-concept-illustration_114360-7962.jpg?w=2000"
           alt=""
         />
       </div>
@@ -138,4 +117,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

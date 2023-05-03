@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Button, Card, CardGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {
+    
+  } from "react-icons/fa";
 
 const Homecard = ({ chef }) => {
   const { id, name, img, likes, experience,recipes } = chef;
@@ -14,14 +17,15 @@ const Homecard = ({ chef }) => {
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
-            <p>{experience}</p>
-            <p>recipes:{recipes}</p>
+            <p>experience: {experience}</p>
+            <p>recipes: {recipes}</p>
             <p><small>Likes:{likes}</small></p>
           </Card.Text>
           <Link to={`/viewdetails/${id}`}><Button className="w-full">View Recipes</Button></Link>
         </Card.Body>
       </Card>
     </div>
+
   );
 };
 

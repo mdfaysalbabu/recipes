@@ -11,12 +11,12 @@ const Details = ({recipe}) => {
 
   const handleFavoriteBtn = () => {
       setIsFavorite(true);
-      toast.success('This recipe is now your favorite!');
+      toast.success('favorite recipe!');
      
   }
     return (
         <div className="col col-md-4  col-12 container py-4">
-        <Card style={{ width: "21rem" }}>
+        <Card className='' style={{ width: "21rem" }}>
           <Card.Img variant="top" src={img_food} style={{ height: "220px" }} />
           <Card.Body>
             <Card.Title className="fw-semibold">{name_food}</Card.Title>

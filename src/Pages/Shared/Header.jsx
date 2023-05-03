@@ -1,21 +1,44 @@
 import React, { useContext } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../Providers/Authprovider";
 
+
 const Header = () => {
-    const {user}=useContext(authContext);
-    
+  const { user, logout } = useContext(authContext);
+  const handleLogOut = () => {
+    logout()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <>
-      <Navbar className="d-flex align-item-center" bg="info" variant="dark">
+      <Navbar className="d-flex align-item-center " bg="info" variant="dark">
         <Container>
-              <h4>Hot Recipes</h4>
-              <Nav className="me-end gap-4">
-                <Link to='/'>Home</Link>
-                <Link to='/blog'>Blog</Link>
-                <Link to='/login'>Login</Link>
-              </Nav>
+          <h4>Hot Recipes</h4>
+          <Nav className="me-end gap-4">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "text-danger" : "default")}
+            >
+              Home
+            </NavLink>
+            
+            <NavLink to="/blog" className={({isActive})=>(isActive?"text-danger":"default")}>Blog</NavLink>
+            {user ? (
+              <>
+                <span>
+                  <img src={user.photoURL} alt="" />
+                </span>
+                <Button onClick={handleLogOut}>Signout</Button>
+              </>
+            ) : (
+              <NavLink to="/login" className={({isActive})=>(isActive?"text-danger":"default")}>Login</NavLink>
+            )}
+          </Nav>
         </Container>
       </Navbar>
     </>

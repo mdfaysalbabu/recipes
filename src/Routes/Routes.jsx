@@ -6,8 +6,8 @@ import Home from "../Pages/Home/Home";
 import Blog from "../Pages/Blog";
 import Card from "../Pages/Home/Card";
 import Viewdetails from "../Pages/Home/Viewdetails";
-import Login from "../Pages/Login";
-import Register from "../Pages/Register";
+import Login from "../Pages/Shared/Login/Login";
+import Register from "../Pages/Shared/Register/Register";
 import Error from "../../../assignment-9/src/Components/Error";
 
 
