@@ -31,7 +31,7 @@ const Header = () => {
             {user ? (
               <>
                 <span>
-                  <img src={user.photoURL} alt="" />
+                  <img className=" rounded" style={{width:"30px"}} src={user?.photoURL} alt="" />
                 </span>
                 <Button onClick={handleLogOut}>Signout</Button>
               </>

@@ -15,8 +15,8 @@ const Details = ({recipe}) => {
      
   }
     return (
-        <div className="col col-md-4  col-12 container py-4">
-        <Card className='' style={{ width: "21rem" }}>
+        <div className="col col-md-4  col-12 container py-4 relative">
+        <Card className='h-100' style={{ width: "21rem" }}>
           <Card.Img variant="top" src={img_food} style={{ height: "220px" }} />
           <Card.Body>
             <Card.Title className="fw-semibold">{name_food}</Card.Title>
@@ -34,10 +34,10 @@ const Details = ({recipe}) => {
               <span className="fw-semibold">Rating: </span>
               {rating}
             </p>
-            <Button
+            <Button className='absolute  top-0'
               onClick={handleFavoriteBtn}
               disabled={isFavorite}
-              variant="primary"
+              variant="success"
             >
               {" "}
               <ToastContainer></ToastContainer>Favorite

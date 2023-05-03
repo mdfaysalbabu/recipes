@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { authContext } from "../../../Providers/Authprovider";
 import { Link } from "react-router-dom";
-import "./Register.css"
+import "./Register.css";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createUser, googleLogin } = useContext(authContext);
@@ -21,16 +22,22 @@ const Register = () => {
     if (password.length < 6) {
       seterror("password must be 6 character");
     }
-     
+
     createUser(email, password)
-        .then((result) => {
-          const loagedUser = result.user;
-          console.log(loagedUser);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    
+      .then((result) => {
+        const loagedUser = result.user;
+        updateUserInfo(loagedUser, name, photo);
+        console.log(loagedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const updateUserInfo = (currentUser, name, photo) => {
+    updateProfile(currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
   const handleGoogleLogin = () => {
     seterror("");
@@ -38,6 +45,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const logedUser = result.user;
+        updateUserInfo(logedUser, name, photo);
         setSuccess("successfully login");
         console.log(user);
       })
@@ -66,7 +74,7 @@ const Register = () => {
               <Form.Control
                 type="text"
                 name="photo"
-                placeholder="Enter "
+                placeholder="Enter Url"
                 required
               />
             </Form.Group>
@@ -96,9 +104,9 @@ const Register = () => {
               <h6 className="text-danger">{error}</h6>
             </div>
 
-            <Button variant="primary" type="submit">
+            <Link to="/login"><Button variant="primary" type="submit">
               register
-            </Button>
+            </Button></Link>
             <br />
             <Form.Text className="text-muted">
               have an account please

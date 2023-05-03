@@ -23,9 +23,10 @@ const Viewdetails = () => {
         </div>
         <div className='col col-md-4 col-12 text-center p-3 text-start'>
             <h2 className="fs-2 fw-bold text-orange text-start text-warning">{dataAll.name}</h2>
+            <h6 className="text-start text-info">{dataAll.bio}</h6>
             <h3 className="text-start text-info">Years of experience: {dataAll. experience}</h3>
             <h4 className="text-start text-info">Number of recipes: {dataAll.recipes}</h4>
-            <h6 className="text-start text-info">{dataAll.bio}</h6>
+            
         </div>
       </div>
       <div className="row g-5 mx-auto mt-5 container">
