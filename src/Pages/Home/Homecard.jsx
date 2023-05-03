@@ -19,7 +19,7 @@ const Homecard = ({ chef }) => {
             width={280}
             threshold={0.92}
             onContentVisible={() => {
-              console.log("loaded");
+              console.log("loaded!");
             }}
           >
             <Card.Img

@@ -4,6 +4,7 @@ import Card from "./Card";
 import Sidecard from "./Sidecard";
 import Extracard from "./Extracard";
 import { Link } from "react-router-dom";
+import "./Home.css"
 
 const Home = () => {
   const [allData, setAlldata] = useState([]);

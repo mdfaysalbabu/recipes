@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Details = ({recipe}) => {
     const { id, name_food, img_food
         , describe, ingrediants, rating } = recipe;
@@ -16,9 +17,9 @@ const Details = ({recipe}) => {
   }
     return (
         <div className="col col-md-4  col-12 container py-4 relative">
-        <Card className='h-100' style={{ width: "21rem" }}>
+        <Card className='' style={{ width: "21rem",height:"700px" }}>
           <Card.Img variant="top" src={img_food} style={{ height: "220px" }} />
-          <Card.Body>
+          <Card.Body className="btn-parent">
             <Card.Title className="fw-semibold">{name_food}</Card.Title>
             <Card.Text>
               <p>
@@ -34,7 +35,7 @@ const Details = ({recipe}) => {
               <span className="fw-semibold">Rating: </span>
               {rating}
             </p>
-            <Button className='absolute  top-0'
+            <Button className='btn-new'
               onClick={handleFavoriteBtn}
               disabled={isFavorite}
               variant="success"
