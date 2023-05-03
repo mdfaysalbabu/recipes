@@ -12,7 +12,7 @@ const Homecard = ({ chef }) => {
           <Card.Img className=""style={{height:"200px"}} variant="top" src={img} />
         </div>
         <Card.Body>
-          <Card.Title className="text-center">{name}</Card.Title>
+          <Card.Title>{name}</Card.Title>
           <Card.Text>
             <p>{experience}</p>
             <p>recipes:{recipes}</p>

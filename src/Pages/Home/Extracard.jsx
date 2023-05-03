@@ -2,7 +2,7 @@ import React from "react";
 
 const Extracard = () => {
   return (
-    <div className="mt-5">
+    <div className="mt-5 mb-5">
       <div className="text-center ">
         <h2 className="fs-2 fw-bold">
           Have Question In Mind?
