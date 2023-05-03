@@ -6,8 +6,11 @@ import Home from "../Pages/Home/Home";
 import Blog from "../Pages/Blog";
 import Card from "../Pages/Home/Card";
 import Viewdetails from "../Pages/Home/Viewdetails";
-import Login from "../Components/Register/Login";
-import Register from "../Components/Register/Register";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+
+
+
 
 const router=createBrowserRouter([
     {
@@ -23,23 +26,21 @@ const router=createBrowserRouter([
                 element:<Blog></Blog>
             },
             {
-                path:'card',
-                element:<Card></Card>,
-                loader:()=>fetch('http://localhost:5000/chef')
-               
+                path:"/viewdetails/:id",
+                element:<Viewdetails></Viewdetails>,
+                loader:({params})=>fetch(`http://localhost:5000/viewdetails/${params.id}`)
+                
             },
             {
-                path:"/view/:id",
-                element:<Viewdetails></Viewdetails>
-            },
-            {
-                path:'login',
-                element:<Login></Login>
-            },
-            {
-                path:'register',
+                path:"register",
                 element:<Register></Register>
+            },
+            {
+                path:"login",
+                element:<Login></Login>
             }
+           
+            
             
         ]
     }

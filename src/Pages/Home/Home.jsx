@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Homecard from "./Homecard";
 import Card from "./Card";
+import Sidecard from "./Sidecard";
+import Extracard from "./Extracard";
 
 const Home = () => {
     const [allData,setAlldata]=useState([])
@@ -11,15 +13,20 @@ const Home = () => {
     },[])
   return (
     <>
-      <div className=" row container ms-auto mt-5 ">
+      <div className=" my-5 container d-flex align-items-center bg-gray-200">
         <div className="col-6">
-          <h2>My Hot Recipes Here</h2>
+          <h2 className="fs-1 fw-bold">Bring the flowers of the world <br /> <span className="text- primary">to your kitchen</span>
+          </h2>
+          <p className="fw-semibold">
+              explore global flavors with global plate
+          </p>
+          <button className="btn btn-info">Explore Now</button>
         </div>
         <div className="col-6">
           <img
             className=""
             style={{ width: "75%" }}
-            src="https://images.wsj.net/im-121422"
+            src="https://static.vecteezy.com/system/resources/previews/004/690/533/large_2x/the-culinary-background-with-variety-of-spices-and-herbs-prepared-on-the-white-table-food-condiment-recipes-from-the-top-view-suitable-for-social-media-or-website-presentation-free-photo.jpg"
             alt=""
           />
         </div>
@@ -28,6 +35,12 @@ const Home = () => {
         {
             allData.map(chef=><Homecard chef={chef}></Homecard>)
         }
+      </div>
+      <div>
+        <Sidecard></Sidecard>
+      </div>
+      <div>
+        <Extracard></Extracard>
       </div>
     </>
   );
