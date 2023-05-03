@@ -3,6 +3,7 @@ import Homecard from "./Homecard";
 import Card from "./Card";
 import Sidecard from "./Sidecard";
 import Extracard from "./Extracard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [allData,setAlldata]=useState([])
@@ -20,7 +21,7 @@ const Home = () => {
           <p className="fw-semibold">
               explore global flavors with global plate
           </p>
-          <button className="btn btn-info">Explore Now</button>
+          <Link to="/top"><button className="btn btn-info">Explore Now</button></Link>
         </div>
         <div className="col-6">
           <img

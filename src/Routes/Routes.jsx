@@ -8,6 +8,7 @@ import Card from "../Pages/Home/Card";
 import Viewdetails from "../Pages/Home/Viewdetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Error from "../../../assignment-9/src/Components/Error";
 
 
 
@@ -16,6 +17,7 @@ const router=createBrowserRouter([
     {
         path:"/",
         element:<Main></Main>,
+        errorElement:<Error></Error>,
         children:[
             {
                 path:'/',

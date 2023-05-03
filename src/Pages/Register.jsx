@@ -15,8 +15,11 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-
-    createUser(email, password)
+    if(password.length<6){
+        seterror("password must be 6 character")
+    }
+    if(name,email,password,photo){
+        createUser(email, password)
       .then((result) => {
         const loagedUser = result.user;
         console.log(loagedUser);
@@ -24,10 +27,15 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
+    }
+    else{
+        seterror("please type wright something")
+    }
+    
   };
 
   return (
-    <div className="row d-flex justify-content-center align-items-center container mt-5">
+    <div className="row d-flex justify-content-center align-items-center container mt-5 mb-4">
       <div className="col-md-6 ">
         <Container className="mx-auto w-50">
           <h3>Please Register</h3>
@@ -69,6 +77,9 @@ const Register = () => {
                 required
               />
             </Form.Group>
+            <div>
+                <h6 className="text-danger">{error}</h6>
+            </div>
 
             <Button variant="primary" type="submit">
               register
