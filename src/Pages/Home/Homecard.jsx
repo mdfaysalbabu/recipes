@@ -41,7 +41,7 @@ const Homecard = ({ chef }) => {
             </p>
           </Card.Text>
           <Link to={`/viewdetails/${id}`}>
-            <Button className="w-full">View Recipes</Button>
+            <Button className="w-full bg-info">View Recipes</Button>
           </Link>
         </Card.Body>
       </Card>

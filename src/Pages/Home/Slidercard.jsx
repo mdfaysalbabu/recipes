@@ -32,7 +32,7 @@ const Slidercard = () => {
             <Carousel.Caption>
               <h3 className="text-info">Burger</h3>
               <p>melted cheese, fresh toppings, Testy Burger.</p>
-              <button className="btn btn-Success">Try Now</button>
+              <button className="btn  btn-success">Try Now</button>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
