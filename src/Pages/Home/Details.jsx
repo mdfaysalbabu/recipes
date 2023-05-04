@@ -9,8 +9,9 @@ import '@smastrom/react-rating/style.css';
 const Details = ({recipe}) => {
     const { id, name_food, img_food
         , describe, ingrediants, rating } = recipe;
-    console.log(recipe)
+    
     const [isFavorite, setIsFavorite] = useState(false);
+    
 
   const handleFavoriteBtn = () => {
       setIsFavorite(true);

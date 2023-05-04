@@ -21,6 +21,9 @@ const Register = () => {
     const photo = form.photo.value;
     if (password.length < 6) {
       seterror("password must be 6 character");
+      return;
+    } else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
+      seterror("password at least two number");
     }
 
     createUser(email, password)
@@ -52,6 +55,9 @@ const Register = () => {
       .catch((error) => {
         seterror(error.message);
       });
+  };
+  const handleAccept = (event) => {
+    setAccept(event.target.checked);
   };
 
   return (
@@ -97,6 +103,18 @@ const Register = () => {
                 required
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                onClick={handleAccept}
+                name="accept"
+                label={
+                  <>
+                    accept <Link to="/term">terms & condition</Link>
+                  </>
+                }
+              />
+            </Form.Group>
             <div>
               <h6 className="text-success">{success}</h6>
             </div>
@@ -104,9 +122,12 @@ const Register = () => {
               <h6 className="text-danger">{error}</h6>
             </div>
 
-            <Link to="/login"><Button variant="primary" type="submit">
-              register
-            </Button></Link>
+            <Link to="/login">
+              <Button variant="primary"disabled={!accept}  type="submit">
+                register
+              </Button>
+            </Link>
+
             <br />
             <Form.Text className="text-muted">
               have an account please

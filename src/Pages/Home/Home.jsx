@@ -3,17 +3,18 @@ import Homecard from "./Homecard";
 import Card from "./Card";
 import Sidecard from "./Sidecard";
 import Extracard from "./Extracard";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "./Home.css"
 import Slidercard from "./Slidercard";
 
 const Home = () => {
-  const [allData, setAlldata] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/chef")
-      .then((res) => res.json())
-      .then((data) => setAlldata(data));
-  }, []);
+    const allData=useLoaderData()
+//   const [allData, setAlldata] = useState([]);
+//   useEffect(() => {
+//     fetch("http://localhost:5000/chef")
+//       .then((res) => res.json())
+//       .then((data) => setAlldata(data));
+//   }, []);
   return (
     <>
       <div className=" my-5 container d-flex align-items-center bg-gray-200">
