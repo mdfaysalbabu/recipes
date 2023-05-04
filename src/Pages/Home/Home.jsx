@@ -3,38 +3,40 @@ import Homecard from "./Homecard";
 import Card from "./Card";
 import Sidecard from "./Sidecard";
 import Extracard from "./Extracard";
-import { Link, useLoaderData } from "react-router-dom";
-import "./Home.css"
+import { Link } from "react-router-dom";
+import "./Home.css";
 import Slidercard from "./Slidercard";
+import { Spinner } from "react-bootstrap";
 
 const Home = () => {
-    const allData=useLoaderData()
-//   const [allData, setAlldata] = useState([]);
-//   useEffect(() => {
-//     fetch("http://localhost:5000/chef")
-//       .then((res) => res.json())
-//       .then((data) => setAlldata(data));
-//   }, []);
+  const [allData, setAllData] = useState([]);
+  useEffect(() => {
+    fetch("https://chef-server-project-mdfaysalbabu.vercel.app/chef")
+      .then((res) => res.json())
+      .then((data) => setAllData(data));
+  }, []);
+
   return (
     <>
-      <div className=" my-5 container d-flex align-items-center bg-gray-200">
-        <div className="col-6">
+      <div className=" my-5 container mx-auto d-flex align-items-center bg-gray-200 row justify-content-center">
+        <div className="col-md-6 col-12 ">
           <h2 className="fs-1 fw-bold">
-            Bring the flowers of the world <br />{" "}
-            <span className="text- primary">to your kitchen</span>
+            Fun and Easy to Become <br />{" "}
+            <span className="text- primary">Master Cook</span>
           </h2>
           <p className="fw-semibold">
-            explore global flavors with global plate
+            Try it explore global flavors with global plate
           </p>
           <Link to="/top">
             <button className="btn btn-info">Explore Now</button>
           </Link>
         </div>
-        <div className="col-6">
+
+        <div className="col-md-6 col-12">
           <img
             className=""
             style={{ width: "80%" }}
-            src="https://static.vecteezy.com/system/resources/previews/004/690/533/large_2x/the-culinary-background-with-variety-of-spices-and-herbs-prepared-on-the-white-table-food-condiment-recipes-from-the-top-view-suitable-for-social-media-or-website-presentation-free-photo.jpg"
+            src="https://previews.123rf.com/images/grafner/grafner1505/grafner150500042/40558742-fast-food-meal-on-white-background.jpg"
             alt=""
           />
         </div>
@@ -43,9 +45,13 @@ const Home = () => {
         <div>
           <h2 className="text-success text-center">Meet And Chose Our Chef</h2>
         </div>
-        {allData.map((chef) => (
-          <Homecard chef={chef}></Homecard>
-        ))}
+        {allData.length == 0 ? (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          allData.map((chef) => <Homecard chef={chef}></Homecard>)
+        )}
       </div>
       <div>
         <Sidecard></Sidecard>

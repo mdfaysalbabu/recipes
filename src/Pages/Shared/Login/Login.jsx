@@ -2,17 +2,16 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../Providers/Authprovider";
-import "./Login.css"
-
+import "./Login.css";
 
 const Login = () => {
-  const { login, googleLogin } = useContext(authContext);
+  const { login, googleLogin, signWithGithub } = useContext(authContext);
   const [user, setuser] = useState("");
   const [success, setSuccess] = useState("");
   const [error, seterror] = useState("");
-  const navigate=useNavigate()
-  const location=useLocation();
-  const from=location.state?.from?.pathname || "/"
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -27,7 +26,7 @@ const Login = () => {
         const loagedUser = result.user;
         setSuccess("successfully login");
         form.reset();
-        navigate(from,{replace:true})
+        navigate(from, { replace: true });
         console.log(loagedUser);
       })
       .catch((error) => {
@@ -41,7 +40,21 @@ const Login = () => {
       .then((result) => {
         const logedUser = result.user;
         setSuccess("successfully login");
+        navigate(from, { replace: true });
         console.log(user);
+      })
+      .catch((error) => {
+        seterror(error.message);
+      });
+  };
+  const githubLogin = () => {
+    signWithGithub()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        seterror("");
+        setSuccess("Successfully Login");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         seterror(error.message);
@@ -101,7 +114,7 @@ const Login = () => {
             </div>
             <div className="">
               <img
-                onClick={""}
+                onClick={githubLogin}
                 className=" social-button"
                 src="https://i.ibb.co/g9f4P0S/github-btn.png"
                 alt=""

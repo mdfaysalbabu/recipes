@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="text-center py-2">
         <h2 className="fs-4 text-info">About Us</h2>
       </div>
-      <Row className="text-center py-4 px-4">
+      <Row className="text-center py-4 px-4 mx-auto">
         <Col lg={4} md={6} xm={12} className="">
           
             <FaGlassCheers className="fs-2 text-info"></FaGlassCheers>

@@ -1,0 +1,10 @@
+.text-danger{
+    text-decoration: none;
+    color: red;
+    margin-top: 5px;
+}
+.default{
+    text-decoration: none;
+    color: black;
+    margin-top: 5px;
+}

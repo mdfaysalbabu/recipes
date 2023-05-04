@@ -9,16 +9,16 @@ const Sidecard = () => {
         We provide a variety food and beverage recipes <br /> with high test
         from famous chef
       </p>
-      <div className="row ">
-        <div className="col col-md-3 col-12 mx-auto mt-5">
+      <div className="row mx-auto">
+        <div className="col col-md-3 col-12  mt-5">
           <Card
             className="mx-auto border shadow-xl bd-body-tertiary rounded"
-            style={{ width: "18rem" }}
+            
           >
             <div className="overflow-hidden ">
               <Card.Img
                 className=""
-                style={{ height: "200px" }}
+                style={{ height: "200px"}}
                 variant="top"
                 src="https://p.kindpng.com/picc/s/248-2485861_indian-cuisine-dish-hd-png-download.png"
               />
@@ -32,10 +32,10 @@ const Sidecard = () => {
             </Card.Body>
           </Card>
         </div>
-        <div className="col col-md-3 col-12 mx-auto mt-5">
+        <div className="col col-md-3 col-12  mt-5">
           <Card
             className="mx-auto border shadow-xl bd-body-tertiary rounded"
-            style={{ width: "18rem" }}
+           
           >
             <div className="overflow-hidden ">
               <Card.Img
@@ -54,17 +54,17 @@ const Sidecard = () => {
             </Card.Body>
           </Card>
         </div>
-        <div className="col col-md-3 col-12 mx-auto mt-5">
+        <div className="col col-md-3 col-12  mt-5">
           <Card
             className="mx-auto border shadow-xl bd-body-tertiary rounded"
-            style={{ width: "18rem" }}
+            
           >
             <div className="overflow-hidden ">
               <Card.Img
                 className=""
                 style={{ height: "200px" }}
                 variant="top"
-                src="https://thumbs.dreamstime.com/b/indian-food-white-background-photo-menu-paper-utensils-182705763.jpg"
+                src="https://bellyfull.net/wp-content/uploads/2021/05/Chicken-Tikka-Masala-blog.jpg"
               />
             </div>
             <Card.Body>
@@ -76,10 +76,10 @@ const Sidecard = () => {
             </Card.Body>
           </Card>
         </div>
-        <div className="col col-md-3 col-12 mx-auto mt-5">
+        <div className="col col-md-3 col-12  mt-5">
           <Card
             className="mx-auto border shadow-xl bd-body-tertiary rounded"
-            style={{ width: "18rem" }}
+            
           >
             <div className="overflow-hidden ">
               <Card.Img

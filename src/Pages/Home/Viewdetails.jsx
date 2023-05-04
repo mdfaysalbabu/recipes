@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Details from "./Details";
+import { FaThumbsUp } from "react-icons/fa";
 
 const Viewdetails = () => {
   const dataAll = useLoaderData();
@@ -12,20 +13,24 @@ const Viewdetails = () => {
   return (
     <div>
       <div className="bg-secondary mt-3 container mx-auto row d-flex justify-content-between">
-        <div className="col col-md-4 col-12 text-center p-3 ">
-          <Card style={{ width: "36rem" }}>
-            <Card.Img className="w-full"
+        <div className="col col-md-4 col-12 text-center p-3 container mx-auto">
+          <div className="" style={{ width: "full" }}>
+            <Card.Img className="w-full "
               variant="top"
               src={dataAll.img}
-              style={{ height: "400px"}}
+              style={{ height: "400px",}}
             />
-          </Card>
+          </div>
         </div>
-        <div className='col col-md-4 col-12 text-center p-3 text-start'>
+        <div className='col col-md-4 col-12 text-center p-3 text-start container mx-auto'>
             <h2 className="fs-2 fw-bold text-orange text-start text-warning">{dataAll.name}</h2>
             <h6 className="text-start text-info">{dataAll.bio}</h6>
             <h3 className="text-start text-info">Years of experience: {dataAll. experience}</h3>
             <h4 className="text-start text-info">Number of recipes: {dataAll.recipes}</h4>
+            <p className="d-flex gap-3">
+              <small className="text-info">Likes: {dataAll.likes} </small>
+              <FaThumbsUp className="text-warning"></FaThumbsUp>
+            </p>
             
         </div>
       </div>

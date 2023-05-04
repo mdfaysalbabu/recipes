@@ -9,6 +9,8 @@ import Viewdetails from "../Pages/Home/Viewdetails";
 import Login from "../Pages/Shared/Login/Login";
 import Register from "../Pages/Shared/Register/Register";
 import Error from "../../../assignment-9/src/Components/Error";
+import Privetroutes from "../Providers/Privetroutes";
+import Errorpage from "../Pages/Shared/Errorpage";
 
 
 
@@ -17,12 +19,12 @@ const router=createBrowserRouter([
     {
         path:"/",
         element:<Main></Main>,
-        errorElement:<Error></Error>,
+        errorElement:<Errorpage></Errorpage>,
         children:[
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=>fetch("http://localhost:5000/chef")
+               
             },
             {
                 path:'blog',
@@ -30,8 +32,8 @@ const router=createBrowserRouter([
             },
             {
                 path:"/viewdetails/:id",
-                element:<Viewdetails></Viewdetails>,
-                loader:({params})=>fetch(`http://localhost:5000/viewdetails/${params.id}`)
+                element:<Privetroutes><Viewdetails></Viewdetails></Privetroutes>,
+                loader:({params})=>fetch(`https://chef-server-project-mdfaysalbabu.vercel.app/viewdetails/${params.id}`)
                 
             },
             {

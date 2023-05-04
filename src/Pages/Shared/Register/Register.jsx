@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { authContext } from "../../../Providers/Authprovider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createUser, googleLogin } = useContext(authContext);
+  const { createUser, googleLogin,logout,signWithGithub } = useContext(authContext);
   const [error, seterror] = useState("");
   const [user, setuser] = useState("");
   const [success, setSuccess] = useState("");
   const [accept, setAccept] = useState(false);
-
+  const navigate=useNavigate()
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -19,21 +19,29 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
+    
     if (password.length < 6) {
       seterror("password must be 6 character");
       return;
     } else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
       seterror("password at least two number");
+      return
     }
-
+     
+  
     createUser(email, password)
       .then((result) => {
         const loagedUser = result.user;
+        console.log(loagedUser)
+        setSuccess("successfully signup")
+        
         updateUserInfo(loagedUser, name, photo);
-        console.log(loagedUser);
+        logout()
+        navigate('/login')
+        
       })
       .catch((error) => {
-        console.log(error);
+        seterror(error);
       });
   };
   const updateUserInfo = (currentUser, name, photo) => {
@@ -48,9 +56,21 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const logedUser = result.user;
-        updateUserInfo(logedUser, name, photo);
         setSuccess("successfully login");
         console.log(user);
+      })
+      .catch((error) => {
+        seterror(error.message);
+      });
+  };
+  const githubLogin = () => {
+    signWithGithub()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        seterror("");
+        setSuccess("Successfully Login");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         seterror(error.message);
@@ -122,11 +142,11 @@ const Register = () => {
               <h6 className="text-danger">{error}</h6>
             </div>
 
-            <Link to="/login">
+            
               <Button variant="primary"disabled={!accept}  type="submit">
                 register
               </Button>
-            </Link>
+           
 
             <br />
             <Form.Text className="text-muted">
@@ -147,7 +167,7 @@ const Register = () => {
             </div>
             <div className="">
               <img
-                onClick={""}
+                onClick={githubLogin}
                 className=" social-button"
                 src="https://i.ibb.co/g9f4P0S/github-btn.png"
                 alt=""

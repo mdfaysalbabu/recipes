@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, CardGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {} from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
 import LazyLoad from "react-lazy-load";
 
 const Homecard = ({ chef }) => {
@@ -35,8 +35,9 @@ const Homecard = ({ chef }) => {
           <Card.Text>
             <p>experience: {experience}</p>
             <p>recipes: {recipes}</p>
-            <p>
-              <small>Likes:{likes}</small>
+            <p className="d-flex gap-3">
+              <small>Likes: {likes} </small>
+              <FaThumbsUp></FaThumbsUp>
             </p>
           </Card.Text>
           <Link to={`/viewdetails/${id}`}>
