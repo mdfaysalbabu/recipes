@@ -5,6 +5,7 @@ import Sidecard from "./Sidecard";
 import Extracard from "./Extracard";
 import { Link } from "react-router-dom";
 import "./Home.css"
+import Slidercard from "./Slidercard";
 
 const Home = () => {
   const [allData, setAlldata] = useState([]);
@@ -47,6 +48,9 @@ const Home = () => {
       </div>
       <div>
         <Sidecard></Sidecard>
+      </div>
+      <div>
+        <Slidercard></Slidercard>
       </div>
       <div>
         <Extracard></Extracard>

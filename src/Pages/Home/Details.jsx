@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Card } from "react-bootstrap";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 
 
 const Details = ({recipe}) => {
@@ -31,9 +33,9 @@ const Details = ({recipe}) => {
               <span className="fw-semibold">Ingredients: </span>
               {ingrediants}
             </p>
-            <p className="fw-semibold">
-              <span className="fw-semibold">Rating: </span>
-              {rating}
+            <p className="fw-semibold d-flex gap-2">
+              <span className="fw-semibold">Rating:</span>
+              {rating} <Rating style={{ maxWidth: 80 }} value={rating} readOnly /> 
             </p>
             <Button className='btn-new'
               onClick={handleFavoriteBtn}
